@@ -6,6 +6,7 @@ const Gallery = (props) => {
   const results = props.data;
   let images;
   let noImages;
+  let markers;
   // map variables to each item in fetched image array and return image component
   if (results.length > 0) {
     images = results.map((image) => {
@@ -17,17 +18,32 @@ const Gallery = (props) => {
       let url = `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}_m.jpg`;
       return <Image url={url} key={id} alt={title} />;
     });
+
+    markers = results.map((image) => {
+      const { id, owner, title } = image;
+
+      return (
+        <Marker
+          key={id}
+          position={[parseFloat(image.latitude), parseFloat(image.longitude)]}
+        >
+          <Popup>
+            <strong>{title}</strong> <br /> {owner}.
+          </Popup>
+        </Marker>
+      );
+    });
   } else {
     noImages = <NoImages />; // return 'not found' component if no images fetched
   }
   return (
     <div>
       {images && (
-        <div>
+        <div className="photos-with-map-container">
           <MapContainer
-            style={{ height: '500px' }}
-            center={[51.505, -0.09]}
-            zoom={13}
+            style={{ height: '250px' }}
+            center={[52.5006354, 13.4212049]}
+            zoom={17}
             touchZoom={true}
             scrollWheelZoom={true}
           >
@@ -35,11 +51,7 @@ const Gallery = (props) => {
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <Marker position={[51.505, -0.09]}>
-              <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
-              </Popup>
-            </Marker>
+            {markers}
           </MapContainer>
           <ul>{images}</ul>
         </div>
