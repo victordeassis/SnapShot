@@ -1,7 +1,9 @@
 import React from 'react';
 import NoImages from './NoImages';
 import Image from './Image';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import Map from './Map';
+import { Marker, Popup } from 'react-leaflet';
+
 const Gallery = (props) => {
   const results = props.data;
   let images;
@@ -39,22 +41,10 @@ const Gallery = (props) => {
   return (
     <div>
       {images && (
-        <div className="photos-with-map-container">
-          <MapContainer
-            style={{ height: '250px' }}
-            center={[52.5006354, 13.4212049]}
-            zoom={17}
-            touchZoom={true}
-            scrollWheelZoom={true}
-          >
-            <TileLayer
-              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            {markers}
-          </MapContainer>
+        <>
+          <Map markers={markers} />
           <ul>{images}</ul>
-        </div>
+        </>
       )}
       {noImages}
     </div>
