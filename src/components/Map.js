@@ -1,5 +1,6 @@
 import React from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
+import LocationMarker from './LocationMarker';
 
 const Map = (props) => {
   const { markers, mapCenterPosition } = props;
@@ -17,6 +18,7 @@ const Map = (props) => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {markers}
+      <LocationMarker mapCenterPosition={mapCenterPosition} />
     </MapContainer>
   );
 };
