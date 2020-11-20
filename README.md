@@ -4,21 +4,29 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![HitCount](http://hits.dwyl.com/Yog9/SnapShot.svg)](http://hits.dwyl.com/Yog9/SnapShot)
 
-[Demo of Snap Shot](https://yog9.github.io/SnapShot/)
+[Live Demo of Victor's Snap Shot](https://yog9.github.io/SnapShot/)
 
 ![](/snapscout.png)
+
+# This is a forked project modified by Victor de Assis
+
+### New Features
+
+- The # from the URL was removed
+- The searched text input is clear once you change the category
+- Was implemented a way to save API requisitions, only calling the API once per session/per searched param
+- Was added a map, using [React Leaflet](https://react-leaflet.js.org/) that shows the locations of the photos
+- Was added a new feature that allows you to click on a photo, and it zoom in the map showing the location of the photo
 
 ### Summary
 
 Snap Shot is a gallery created using React,React Hooks, React Router and Context API. The Routes were setup for four default pages and a search page. Also the images were displayed using the Flickr API and axios to fetch data.
 
-### Motivation
-
-The purpose of this project was to get familiar with React Hooks and Context API.
-
 ### Getting Started
 
-Click the demo link or clone/download the repository on your local machine.
+Click the Live demo or clone/download the repository on your local machine.
+
+**If you want to create your own Flikr API Key:**
 Create a config.js file in api folder inside src folders. In config.js file write
 `export const apiKey = "YOUR_FLIKR_API_KEY";`
 
@@ -30,6 +38,10 @@ Create a config.js file in api folder inside src folders. In config.js file writ
 
 `yarn start`
 
+##### Run tests
+
+`yarn test`
+
 ### Built With
 
 - React js
@@ -37,16 +49,13 @@ Create a config.js file in api folder inside src folders. In config.js file writ
 - React Hooks
 - Context API
 - Flickr API
+- React Leaflet
 
 ### Features
 
 **1. Responsive Design.**
 
 **2. Search functionality added to search photos from API.**
-
-### Coming Soon
-
-- [ ] Cypress E2E Tests
 
 ### Contributing
 
